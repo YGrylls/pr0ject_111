@@ -1,7 +1,8 @@
-<<<<<<< HEAD
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Platform.targets(57,5): error MSB8020: The build tools for v141 (Platform Toolset = 'v141') cannot be found. To build using the v141 build tools, please install v141 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
-=======
-﻿  pr0ject_111.vcxproj -> D:\BIGPROJECT\pr0ject_111\proj.win32\Debug.win32\pr0ject_111.exe
-  pr0ject_111.vcxproj -> D:\BIGPROJECT\pr0ject_111\proj.win32\Debug.win32\pr0ject_111.pdb (Full PDB)
+﻿  MainMenu.cpp
+d:\github\pr0ject_111\proj.win32\balls.h(64): warning C4996: 'cocos2d::ccpDistance': 被声明为已否决
+  d:\github\pr0ject_111\cocos2d\cocos\deprecated\ccdeprecated.h(272): note: 参见“cocos2d::ccpDistance”的声明
+d:\github\pr0ject_111\proj.win32\mainmenu.cpp(41): warning C4305: “参数”: 从“double”到“float”截断
+d:\github\pr0ject_111\proj.win32\mainmenu.cpp(222): warning C4305: “参数”: 从“double”到“float”截断
+  pr0ject_111.vcxproj -> D:\GitHub\pr0ject_111\proj.win32\Debug.win32\pr0ject_111.exe
+  pr0ject_111.vcxproj -> D:\GitHub\pr0ject_111\proj.win32\Debug.win32\pr0ject_111.pdb (Full PDB)
   复制了 0 个文件
->>>>>>> refs/remotes/YGrylls/master
