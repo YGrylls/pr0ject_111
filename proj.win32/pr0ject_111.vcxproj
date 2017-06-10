@@ -150,6 +150,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="BallSelectMenu.cpp" />
+    <ClCompile Include="BattleField.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
   </ItemGroup>
@@ -157,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="Balls.h" />
     <ClInclude Include="BallSelectMenu.h" />
+    <ClInclude Include="BattleField.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MainMenu.h" />

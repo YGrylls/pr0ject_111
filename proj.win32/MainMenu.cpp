@@ -1,10 +1,24 @@
 //This is the main menu
 #include "MainMenu.h"
-#include"Balls.h"
+#include "Balls.h"
+#include "BallSelectMenu.h"
 #include<ui/CocosGUI.h>
 USING_NS_CC;
 using namespace ui;
+<<<<<<< HEAD
 using namespace cocos2d;
+=======
+void MainMenu::switchSceneToSelectSP()
+{
+	auto transition = TransitionPageTurn::create(1.2f, BallSelectMenu::createScene(0),false);
+	Director::getInstance()->replaceScene(transition);
+}
+void MainMenu::switchSceneToSelectMP()
+{
+	auto transition = TransitionPageTurn::create(1.2f, BallSelectMenu::createScene(1), false);
+	Director::getInstance()->replaceScene(transition);
+}
+>>>>>>> 88944cd398c3daaf083136c9d4af01ef05a50969
 Scene* MainMenu::createScene()
 {
 	auto scene = Scene::create();
@@ -22,18 +36,17 @@ bool MainMenu::init()
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 originPos = Director::getInstance()->getVisibleOrigin();
-	//this->_localZOrder = 2;
 	CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("titlemusic.mp3");
 	//the Start Button
 	auto startGame_button = Button::create("StartMenu_startbutton.png");
 	startGame_button->setPosition(Vec2(visibleSize.width / 2 + originPos.x, visibleSize.height / 2.7 + originPos.y));
-	startGame_button->setScale(0.5);
-	//here to put the onclick event
-	this->addChild(startGame_button);
+	startGame_button->setScale(0.6);
+	startGame_button->addClickEventListener(Widget::ccWidgetClickCallback(CC_CALLBACK_0(MainMenu::switchSceneToSelectSP,this)));
+	this->addChild(startGame_button);	
 	auto startGame_button_mp = Button::create("StartMenu_startbutton_MP.png");
-	startGame_button_mp->setPosition(Vec2(visibleSize.width / 2 + originPos.x, visibleSize.height / 2.7 - 120 + originPos.y));
-	startGame_button_mp->setScale(0.5);
-	//here to put the onclick event mp
+	startGame_button_mp->setPosition(Vec2(visibleSize.width / 2 + originPos.x, visibleSize.height / 2.7 - 110 + originPos.y));
+	startGame_button_mp->setScale(0.6);
+	startGame_button_mp->addClickEventListener(Widget::ccWidgetClickCallback(CC_CALLBACK_0(MainMenu::switchSceneToSelectMP,this)));
 	this->addChild(startGame_button_mp);
 	//the title logo
 	auto titleLogo = Balls::createWithFileName("StartMenu_titlelogo.png");
@@ -59,7 +72,7 @@ bool MainBG::init()
 	backGround->setPosition(Vec2(visibleSize.width / 2 + originPos.x, visibleSize.height / 2 + originPos.y));
 	this->addChild(backGround);
 	Balls* huaJi = Balls::createWithFileName("huaJi.png");
-	huaJi->initStatus(10);
+	huaJi->initStatus(10,1);
 	huaJi->setPosition(Vec2(visibleSize.width / 2 + originPos.x, visibleSize.height / 2 + originPos.y));
 	this->addChild(huaJi, 1, "HJ");
 	//food
@@ -187,37 +200,45 @@ bool MainBG::init()
 	}
 		num = 0;
 	// test balls
-	Balls*test1 = Balls::createWithFileName("test.png");
-	test1->initStatus(3);
+	Balls*test1 = Balls::createWithFileName("huaji.png");
+	test1->initStatus(3,0);
 	test1->setPosition(Vec2(visibleSize.width / 2 + originPos.x + 300, visibleSize.height / 2 + originPos.y + 300));
 	this->addChild(test1, 1);
-	Balls*test2 = Balls::createWithFileName("test.png");
-	test2->initStatus(1);
+	Balls*test2 = Balls::createWithFileName("huaji.png");
+	test2->initStatus(1,0);
 	test2->setPosition(Vec2(visibleSize.width / 2 + originPos.x - 300, visibleSize.height / 2 + originPos.y));
 	this->addChild(test2, 1);
-	Balls*test3 = Balls::createWithFileName("test.png");
-	test3->initStatus(5);
+	Balls*test3 = Balls::createWithFileName("huaji.png");
+	test3->initStatus(5,0);
 	test3->setPosition(Vec2(visibleSize.width / 2 + originPos.x - 300, visibleSize.height / 2 + originPos.y + 300));
 	this->addChild(test3, 1);
-	Balls*test4 = Balls::createWithFileName("test.png");
-	test4->initStatus(12);
+	Balls*test4 = Balls::createWithFileName("huaji.png");
+	test4->initStatus(7,0);
 	test4->setPosition(Vec2(visibleSize.width / 2 + originPos.x - 300, visibleSize.height / 2 + originPos.y - 300));
 	this->addChild(test4, 1);
-	//
-	auto listener = EventListenerMouse::create();
-	listener->onMouseMove = [=](Event* event)
+	
+
+	auto m_listener = EventListenerMouse::create();
+	m_listener->onMouseMove = [=](Event* event)
 	{
 		EventMouse* _event = (EventMouse*)event;
 		x = _event->getCursorX();
 		y = _event->getCursorY();
 	};
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-	this->schedule(schedule_selector(MainBG::update), 0.1f);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(m_listener, this);
+	k_listener = EventListenerKeyboard::create();
+	k_listener->onKeyPressed = [=](EventKeyboard::KeyCode keycode, Event* event)
+	{
+		_keycode = keycode;
+	};
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(k_listener, this);
+	this->schedule(schedule_selector(MainBG::update), 0.03333f);
 	return true;
 }
 
 void MainBG::update(float dt)
 {
+<<<<<<< HEAD
 	this->getChildByName("HJ")->stopAllActions();
 	auto moveTo = MoveTo::create(0.8, Vec2(x, y));
 	this->getChildByName("HJ")->runAction(moveTo);
@@ -239,4 +260,14 @@ void MainBG::update(float dt)
 		}
 		num = 0;
 	}
+=======
+	
+	std::string name = "HJ";
+	Balls* yourball = dynamic_cast<Balls*>(this->getChildByName("HJ"));
+	yourball->movement(name,x,y,this);
+	yourball->swallow(this);
+	yourball->division(x,y,_keycode,this,this->k_listener);
+	yourball->updateRadius();
+	_keycode = cocos2d::EventKeyboard::KeyCode::KEY_NONE;
+>>>>>>> 88944cd398c3daaf083136c9d4af01ef05a50969
 }
