@@ -10,6 +10,7 @@ private:
 	int _radius;
 	int _identity;                                                     //sync with the id of Character;1 for Player,0 for computer
 public:
+	bool _isfood;
 	//skill to be done
 	static Balls* createWithFileName(const std::string & filename)
 	{
