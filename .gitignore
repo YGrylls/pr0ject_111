@@ -4,4 +4,10 @@
 *.ipch
 *.pch
 *.pdb
+<<<<<<< HEAD
 proj.win32/Debug.win32/pr0ject_111.log
+=======
+/proj.win32/Debug.win32/
+/proj.win32/Debug.win32/*
+/proj.win32/Debug.win32
+>>>>>>> 88944cd398c3daaf083136c9d4af01ef05a50969
