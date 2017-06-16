@@ -184,7 +184,7 @@ bool Combat::init()
 	num = CCRANDOM_0_1() * 15;
 	auto aiBalls4 = AiBalls::createWithFileName(this, "rotate.png", 2, 4, 120);
 	aiBalls4->setPosition(aiBalls1->getOriginalPosition(num));
-	aiBalls4->runAction(CCRepeatForever::create(RotateBy::create(2, 360)));
+	aiBalls4->runAction(CCRepeatForever::create(RotateBy::create(2, -360)));
 	num = CCRANDOM_0_1() * 15;
 	auto aiBalls5 = AiBalls::createWithFileName(this, "teri.png", 2, 5, 150);
 	aiBalls5->setPosition(aiBalls1->getOriginalPosition(num));
