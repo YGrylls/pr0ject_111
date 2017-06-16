@@ -312,9 +312,11 @@ void Food::foodRefresh(float del)
 	{
 		int xPos = CCRANDOM_MINUS1_1() * 4800;
 		int yPos = CCRANDOM_MINUS1_1() * 4800;
+		float timeFix = (dynamic_cast<ScoreCounter *>(this->getParent()->getParent()->getChildByTag(4))->score) / 780+1;
+		if (timeFix > 1.8f)timeFix = 1.8f;
 		float food_colour;
-		food_colour = CCRANDOM_0_1();
-		if (food_colour < 0.17)
+		food_colour = CCRANDOM_0_1()*timeFix;
+		if (food_colour < 0.16)
 		{
 			auto food = Balls::createWithBallsFrame(cache->getSpriteFrameByName("red"));
 			food->setPosition(Vec2(xPos, yPos));
@@ -322,7 +324,7 @@ void Food::foodRefresh(float del)
 			this->addChild(food);
 			foodCount += 1;
 		}
-		else if (food_colour < 0.34)
+		else if (food_colour < 0.33)
 		{
 			auto food = Balls::createWithBallsFrame(cache->getSpriteFrameByName("yellow"));
 			food->setPosition(Vec2(xPos, yPos));
@@ -330,7 +332,7 @@ void Food::foodRefresh(float del)
 			this->addChild(food);
 			foodCount += 1;
 		}
-		else if (food_colour < 0.5)
+		else if (food_colour < 0.48)
 		{
 			auto food = Balls::createWithBallsFrame(cache->getSpriteFrameByName("blue"));
 			food->setPosition(Vec2(xPos, yPos));
@@ -338,7 +340,7 @@ void Food::foodRefresh(float del)
 			this->addChild(food);
 			foodCount += 1;
 		}
-		else if (food_colour < 0.67)
+		else if (food_colour < 0.66)
 		{
 			auto food = Balls::createWithBallsFrame(cache->getSpriteFrameByName("green"));
 			food->setPosition(Vec2(xPos, yPos));
@@ -346,7 +348,7 @@ void Food::foodRefresh(float del)
 			this->addChild(food);
 			foodCount += 1;
 		}
-		else if (food_colour < 0.84)
+		else if (food_colour < 0.82)
 		{
 			auto food = Balls::createWithBallsFrame(cache->getSpriteFrameByName("purple"));
 			food->setPosition(Vec2(xPos, yPos));
@@ -354,7 +356,7 @@ void Food::foodRefresh(float del)
 			this->addChild(food);
 			foodCount += 1;
 		}
-		else if(food_colour<0.95)
+		else if(food_colour<0.93)
 		{
 			auto food = Balls::createWithBallsFrame(cache->getSpriteFrameByName("scolor"));
 			food->setPosition(Vec2(xPos, yPos));
