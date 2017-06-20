@@ -4,6 +4,7 @@
 #include<ui/CocosGUI.h>
 #include<SimpleAudioEngine.h>
 #include"Balls.h"
+#include<ctime>
 USING_NS_CC;
 using namespace ui;
 void MainMenu::switchSceneToSelectSP()
@@ -58,6 +59,7 @@ bool MainMenu::init()
 }
 bool MainBG::init()
 {
+	std::srand(std::time(0));
 	if (!Layer::init())
 	{
 		return false;

@@ -5,6 +5,7 @@
 #include "BattleField.h"
 #include "MainMenu.h"
 #include "AiBalls.h"
+#include<ctime>
 
 USING_NS_CC;
 Scene * BattleField::createScene(int ballID)
@@ -44,11 +45,11 @@ void BattleField::getDirection(float dt)
 		AiBalls* target_p = dynamic_cast<AiBalls*>(target);
 		if (target_p != nullptr)
 		{
-			if (target_p->getID() == 2 && target_p->getSUBID() == 1) _direction_1 = target_p->_getDirection(target_p, nodeX, nodeY, BGlevel);
-			if (target_p->getID() == 2 && target_p->getSUBID() == 2) _direction_2 = target_p->_getDirection(target_p, nodeX, nodeY, BGlevel);
-			if (target_p->getID() == 2 && target_p->getSUBID() == 3) _direction_3 = target_p->_getDirection(target_p, nodeX, nodeY, BGlevel);
-			if (target_p->getID() == 2 && target_p->getSUBID() == 4) _direction_4 = target_p->_getDirection(target_p, nodeX, nodeY, BGlevel);
-			if (target_p->getID() == 2 && target_p->getSUBID() == 5) _direction_5 = target_p->_getDirection(target_p, nodeX, nodeY, BGlevel);
+			if (target_p->getID() == 2 && target_p->getSUBID() == 1) _direction_1 = target_p->getDirection( nodeX, nodeY, BGlevel);
+			if (target_p->getID() == 2 && target_p->getSUBID() == 2) _direction_2 = target_p->getDirection(nodeX, nodeY, BGlevel);
+			if (target_p->getID() == 2 && target_p->getSUBID() == 3) _direction_3 = target_p->getDirection( nodeX, nodeY, BGlevel);
+			if (target_p->getID() == 2 && target_p->getSUBID() == 4) _direction_4 = target_p->getDirection( nodeX, nodeY, BGlevel);
+			if (target_p->getID() == 2 && target_p->getSUBID() == 5) _direction_5 = target_p->getDirection( nodeX, nodeY, BGlevel);
 		}
 	}
 }
@@ -158,6 +159,7 @@ void BattleField::update(float del)
 }
 bool Combat::init()
 {
+	std::srand(std::time(0));
 	if (!Layer::init())
 	{
 		return false;
@@ -269,9 +271,7 @@ bool BattleField::init()
 	//this->schedule(schedule_selector(BattleField::update), 0.02f);
 	//for debug using¡ü
 	this->scheduleUpdate();
-
 	this->schedule(schedule_selector(BattleField::getDirection),0.4f);
-
 	auto m_listener = EventListenerMouse::create();
 	m_listener->onMouseMove = [=](Event * event)
 	{

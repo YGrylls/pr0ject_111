@@ -16,12 +16,12 @@ AiBalls* AiBalls::createWithFileName(Layer*lSender, const std::string& filename,
 	return nullptr;
 }
 
-Vec2&AiBalls::_getDirection(AiBalls*target_p, float nodeX, float nodeY, int BGlevel)
+Vec2&AiBalls::getDirection( float nodeX, float nodeY, int BGlevel)
 {
 	int _x_ai = 0, _y_ai = 0;
 	float distance, x0, y0;
-	x0 = target_p->getPositionX() - nodeX;
-	y0 = target_p->getPositionY() - nodeY;
+	x0 = this->getPositionX() - nodeX;
+	y0 = this->getPositionY() - nodeY;
 	distance = (0.0001*(x0*x0) + 0.0001*(y0*y0));
 	
 	if (distance > 40)
@@ -32,12 +32,12 @@ Vec2&AiBalls::_getDirection(AiBalls*target_p, float nodeX, float nodeY, int BGle
 
 	if (distance < 40)
 	{
-		if (target_p->getLevel() <= BGlevel)
+		if (this->getLevel() <= BGlevel)
 		{
-			_x_ai = 2 * target_p->getPositionX() - nodeX;
-			_y_ai = 2 * target_p->getPositionY() - nodeY;
+			_x_ai = 2 * this->getPositionX() - nodeX;
+			_y_ai = 2 * this->getPositionY() - nodeY;
 		}
-		else if (target_p->getLevel() > BGlevel)
+		else if (this->getLevel() > BGlevel)
 		{
 			_x_ai = nodeX;
 			_y_ai = nodeY;
