@@ -9,7 +9,7 @@ private:
 	float _level;
 	int _radius;
 	int _subid;
-	int _identity;                                                     //sync with the id of Character;
+	int _identity;                                                   
 public:
 	bool isfood;
 	//skill to be done
@@ -18,7 +18,6 @@ public:
 	bool initStatus(int tlevel, int id);
 	bool initStatusMin();
 	bool initStatusBoom();
-	bool initStatusBIG(int tlevel, int id);
 	void setID(int identity);
 	void setSUBID(int SUBID);
 	int getID();

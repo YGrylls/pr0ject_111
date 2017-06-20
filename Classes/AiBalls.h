@@ -5,7 +5,6 @@ USING_NS_CC;
 
 class AiBalls :public Balls
 {
-	int SUBId;
 public:
 	//create AiBalls
 	static AiBalls* createWithFileName(Layer*, const std::string&, int, int, int);
@@ -16,5 +15,5 @@ public:
 
 	Vec2& getNewPosition(int);
 	Vec2& getOriginalPosition(int);
-	Vec2& _getDirection(AiBalls*target_p, float nodeX, float nodeY, int BGlevel);
+	Vec2& getDirection( float nodeX, float nodeY, int BGlevel);
 };
